@@ -1,0 +1,6 @@
+# Core dependencies for Gateway & Test Suite
+# Note: Gateway daemon core runs on Python standard library (sqlite3, http.server, socket)
+# Third-party packages below enable MQTT bridging and testing:
+
+paho-mqtt>=2.0.0
+requests>=2.28.0

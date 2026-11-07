@@ -1,0 +1,29 @@
+[Unit]
+Description=MYIR MYS-6ULX-IND Environmental IoT Gateway Service
+Documentation=https://github.com/maithehung7511/DO_AN_1
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/gateway
+ExecStart=/usr/bin/python3 /opt/gateway/gateway/gateway_daemon.py --config /opt/gateway/gateway/config.json
+Restart=always
+RestartSec=5s
+
+# Resource limits & sandbox protections for Embedded Linux
+LimitNOFILE=65535
+TimeoutStopSec=15s
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mys6ulx-gw
+
+# Environment variables
+Environment=PYTHONUNBUFFERED=1
+Environment=GATEWAY_MOCK_CLOUD=0
+
+[Install]
+WantedBy=multi-user.target

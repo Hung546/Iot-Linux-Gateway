@@ -1,0 +1,36 @@
+{
+  "gateway": {
+    "id": "myir-mys6ulx-gw01",
+    "board_model": "MYIR MYS-6ULX-IND (i.MX 6ULL Cortex-A7)",
+    "log_level": "INFO"
+  },
+  "http_server": {
+    "enabled": true,
+    "host": "0.0.0.0",
+    "port": 8080
+  },
+  "local_mqtt_rx": {
+    "enabled": false,
+    "broker_host": "127.0.0.1",
+    "broker_port": 1883,
+    "topics": [
+      "devices/+/telemetry",
+      "gateway/telemetry/rx"
+    ]
+  },
+  "cloud_forwarder": {
+    "enabled": true,
+    "broker_host": "127.0.0.1",
+    "broker_port": 1883,
+    "username_or_token": "mys6ulx_access_token",
+    "topic": "v1/devices/me/telemetry",
+    "batch_size": 20,
+    "poll_interval_sec": 2.0,
+    "mock_mode": true
+  },
+  "storage": {
+    "max_records": 50000,
+    "retention_policy": "purge_sent_oldest",
+    "warning_threshold_pct": 85.0
+  }
+}
